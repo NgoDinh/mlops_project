@@ -36,6 +36,7 @@ pytest-steps = "^1.8.0"
 deepchecks = "^0.17.3"
 pytest = "^7.4.0"
 path = "^16.6.0"
+dvc = "^3.2.2"
 
 [build-system]
 requires = ["poetry-core"]

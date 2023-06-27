@@ -7,6 +7,7 @@ from typing import Callable
 
 import hydra
 import joblib
+import bentoml
 import numpy as np
 import pandas as pd
 from hydra.utils import to_absolute_path as abspath
@@ -106,8 +107,11 @@ def train(config: DictConfig):
     # Find best model
     best_model = optimize(objective, space)
 
-    # Save model
-    joblib.dump(best_model, abspath(config.model.path))
+    # save to bentoml repo
+    saved_model = bentoml.xgboost.save_model(
+        config.model.name, best_model, signatures={"predict": {"batchable": True, "batch_dim": 0}}
+    )
+    print(f"Model saved: {saved_model}")
 
 
 if __name__ == "__main__":

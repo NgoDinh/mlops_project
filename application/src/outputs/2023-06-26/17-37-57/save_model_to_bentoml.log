@@ -1,0 +1,1 @@
+[2023-06-26 17:37:58,194][bentoml._internal.frameworks.picklable][INFO] - Using the default model signature for pickable model ({'__call__': ModelSignature(batchable=False, batch_dim=(0, 0), input_spec=None, output_spec=None)}) for model "xgboost".
