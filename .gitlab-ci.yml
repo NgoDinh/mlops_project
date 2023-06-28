@@ -22,8 +22,11 @@ run_tests:
   script:
     - pytest training/test
 
-.run_build:
+build:
   stage: build
+  image: python:3.10.10
+  services:
+    - docker:20.10.16-dind
   before_script:
     - pip install bentoml
   script:
@@ -32,13 +35,6 @@ run_tests:
     - docker tag $IMAGE_NAME:$IMAGE_TAG pycaret1vund.azurecr.io/predict_employee
     - docker push pycaret1vund.azurecr.io/predict_employee
 
-python:
-  extends: ['.run_build']
-  image: python:3.10.10
-
-node:
-  extends: ['.run_build']
-  image: docker:20.10.16
 
 # build_image:
 #   stage: build
