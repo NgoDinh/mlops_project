@@ -15,6 +15,7 @@ run_tests:
     - pip install pandas
     - pip install pandera
     - pip install pytest_steps
+    - pip install hydra
   script:
     - pytest training/test
 
