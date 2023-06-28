@@ -1,4 +1,3 @@
-image: python:3.10.10
 variables:
   IMAGE_NAME: predict_employee
   IMAGE_TAG: latest
@@ -34,10 +33,16 @@ python:
   # extends: ['.run_build']
   stage: build
   image: docker:20.10.16
+  services:
+    - docker:20.10.16-dind
+  before_script:
+    - apt install python==3.10.10
+
   # image: python:3.10.10
   # before_script:
   #   - pip install -r requirements.txt
   script:
+    - docker --version
     - python --version
     # - python training/src/main.py
     # - bentoml build application/src
