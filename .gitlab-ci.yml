@@ -33,6 +33,8 @@ build:
     - python training/src/main.py
     - bentoml build application/src
     - bentoml models list
+    - pwd
+    - ls
     # - bentoml containerize $IMAGE_NAME:$IMAGE_TAG --opt platform=linux/amd64
     # - docker tag $IMAGE_NAME:$IMAGE_TAG pycaret1vund.azurecr.io/predict_employee
     # - docker push pycaret1vund.azurecr.io/predict_employee
