@@ -108,6 +108,7 @@ def train(config: DictConfig):
     best_model = optimize(objective, space)
 
     # save to bentoml repo
+    joblib.dump(best_model, abspath(config.model.path))
     saved_model = bentoml.xgboost.save_model(
         config.model.name, best_model, signatures={"predict": {"batchable": True, "batch_dim": 0}}
     )

@@ -27,9 +27,14 @@ final:
   path: ${final.dir}/${final.name}
 
 model:
-  # dir: ../../models
+  dir: models
   name: employee_churn_clf
-  # path: ${model.dir}/${model.name}
+  path: ${model.dir}/${model.name}
+
+# model:
+#   # dir: ../../models
+#   name: employee_churn_clf
+#   # path: ${model.dir}/${model.name}
 
 
 mlflow_tracking_ui: https://dagshub.com/vu93.ngo/final_project.mlflow
