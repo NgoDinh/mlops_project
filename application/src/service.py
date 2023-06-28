@@ -6,7 +6,7 @@ from hydra import compose, initialize
 from patsy import dmatrix
 from pydantic import BaseModel
 
-with initialize( config_path="../../config"):
+with initialize( config_path="config"):
     config = compose(config_name="main")
     FEATURES = config.process.features
     MODEL_NAME = config.model.name
@@ -36,8 +36,8 @@ def add_dummy_data(df: pd.DataFrame):
 
 
 def rename_columns(X: pd.DataFrame):
-    X.columns = X.columns.str.replace("[", "_", regex=True).str.replace(
-        "]", "", regex=True
+    X.columns = X.columns.str.replace("\[", "_", regex=True).str.replace(
+        "\]", "", regex=True
     )
     return X
 
@@ -56,10 +56,10 @@ model = bentoml.xgboost.get(
     f"{MODEL_NAME}:latest"
 ).to_runner()
 # Create service with the model
-service = bentoml.Service("predict_employee", runners=[model])
+svc = bentoml.Service("predict_employee", runners=[model])
 
 
-@service.api(input=JSON(pydantic_model=Employee), output=NumpyNdarray())
+@svc.api(input=JSON(pydantic_model=Employee), output=NumpyNdarray())
 def predict(employee: Employee) -> np.ndarray:
     """Transform the data then make predictions"""
     df = pd.DataFrame(employee.dict(), index=[0])
