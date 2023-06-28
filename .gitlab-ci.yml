@@ -12,6 +12,9 @@ run_tests:
   image: python:3.10.10
   before_script:
     - pip install pytest
+    - pip install pandas
+    - pip install pandera
+    - pip install pytest_steps
   script:
     - pytest training/test
 
