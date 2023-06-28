@@ -36,7 +36,7 @@ python:
   services:
     - docker:20.10.16-dind
   before_script:
-    - apt install python==3.10.10
+    - apt-get install python==3.10.10
 
   # image: python:3.10.10
   # before_script:
