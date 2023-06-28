@@ -38,6 +38,7 @@ python:
   image: docker:20.10.16
   services:
     - docker:20.10.16-dind
+    - python:3.10.10
   # before_script:
   #   - python --version
 
