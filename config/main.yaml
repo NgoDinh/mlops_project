@@ -4,10 +4,10 @@ defaults:
   - _self_
 
 raw: 
-  path: ../../data/raw/Employee.csv
+  path: data/raw/Employee.csv
 
 processed:
-  dir: ../../data/processed
+  dir: data/processed
   X_train: 
     name: X_train.csv
     path: ${processed.dir}/${processed.X_train.name}
