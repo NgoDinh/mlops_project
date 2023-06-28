@@ -12,6 +12,9 @@ dagshub link: https://dagshub.com/vu93.ngo/final_project
 - Step 5: Test processing function with pytest, to be update: test model (training.test)
 ### Create service
 - Step 6: Load model bentoml model repo (application.src.create_service)
+- Step 7: Build bento and docker (bentoml build )
+- Step 8: Push image to azure (note when build by Mac m1 include option `--opt platform=linux/amd64`)
+- Step 9: Build streamlit app from above API
 ----
 - New libraries:
     - partial functions: https://www.geeksforgeeks.org/partial-functions-python/

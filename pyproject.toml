@@ -9,14 +9,11 @@ packages = [{include = "dagshub_project"}]
 [tool.poetry.dependencies]
 python = "==3.10.10"
 kaleido = "0.2.1"
-pycaret = "^3.0.2"
-pandas-profiling = "^3.6.6"
 mlflow = "^2.4.1"
 pre-commit = "^3.3.3"
 dagshub = "^0.2.18.post1"
 jupyter = "^1.0.0"
 shap = "^0.41.0"
-explainerdashboard = "^0.4.2.2"
 fastapi = "^0.97.0"
 uvicorn = "^0.22.0"
 pydantic = "^1.10.9"
@@ -37,6 +34,8 @@ deepchecks = "^0.17.3"
 pytest = "^7.4.0"
 path = "^16.6.0"
 dvc = "^3.2.2"
+streamlit = "^1.23.1"
+pandas = "^2.0.2"
 
 [build-system]
 requires = ["poetry-core"]
