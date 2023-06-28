@@ -1,3 +1,4 @@
+image: python:3.10.10
 variables:
   IMAGE_NAME: predict_employee
   IMAGE_TAG: latest
@@ -10,40 +11,44 @@ stages:
 run_tests:
   stage: test
   image: python:3.10.10
-  before_script:
-    - pip install pytest
-    - pip install pandas
-    - pip install pandera
-    - pip install pytest-steps
-    - pip install hydra-core
-    - pip install scikit-learn
-    - pip install omegaconf
-    - pip install patsy
-  script:
-    - pytest training/test
-
-.run_build:
-  stage: test
-  script:
-    - echo "woohoo, tests pass" 
-
-python:
-  extends: ['.run_build']
-  image: python:3.10.10
-  before_script:
-    - pip install -r requirements.txt
+  # before_script:
+  #   - pip install pytest
+  #   - pip install pandas
+  #   - pip install pandera
+  #   - pip install pytest-steps
+  #   - pip install hydra-core
+  #   - pip install scikit-learn
+  #   - pip install omegaconf
+  #   - pip install patsy
+  # script:
+  #   - pytest training/test
   script:
     - python --version
-    - python training/src/main.py
-    - bentoml build application/src
-    - bentoml models list
 
-docker:
-  extends: ['.run_build']
+# .run_build:
+#   stage: build
+#   script:
+#     - echo "woohoo, tests pass" 
+
+python:
+  # extends: ['.run_build']
+  stage: build
   image: docker:20.10.16
+  # image: python:3.10.10
+  # before_script:
+  #   - pip install -r requirements.txt
   script:
-    - docker --version
-    - ls ~
+    - python --version
+    # - python training/src/main.py
+    # - bentoml build application/src
+    # - bentoml models list
+
+# docker:
+#   extends: ['.run_build']
+#   image: docker:20.10.16
+#   script:
+#     - docker --version
+#     - ls ~
 
 # build:
 #   stage: build
