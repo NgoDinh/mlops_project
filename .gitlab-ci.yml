@@ -1,0 +1,11 @@
+stages:
+  - test
+  - build
+  - deploy
+
+run_tests:
+  stage: test
+  image: python:3.10.10
+  script:
+    - pytest training/test
+
