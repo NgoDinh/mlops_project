@@ -35,10 +35,9 @@ run_tests:
 python:
   # extends: ['.run_build']
   stage: build
-  image: docker:20.10.16
+  image: python:3.10.10
   services:
     - docker:20.10.16-dind
-    - python:3.10.10
   # before_script:
   #   - python --version
 
