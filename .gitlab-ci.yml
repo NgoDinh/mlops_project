@@ -28,15 +28,16 @@ build:
   services:
     - python:3.10.10
     - docker:20.10.16-dind
-  before_script:
-    - pip install -r requirements.txt
+  # before_script:
+  #   - pip install -r requirements.txt
   script:
-    - python training/src/main.py
-    - bentoml build application/src
-    - bentoml models list
-    - pwd
-    - ls
-    - ls ~
+    - python --version
+    # - python training/src/main.py
+    # - bentoml build application/src
+    # - bentoml models list
+    # - pwd
+    # - ls
+    # - ls ~
     - docker --version
     # - bentoml containerize $IMAGE_NAME:$IMAGE_TAG --opt platform=linux/amd64
     # - docker tag $IMAGE_NAME:$IMAGE_TAG pycaret1vund.azurecr.io/predict_employee
