@@ -12,3 +12,4 @@ xgboost
 pandera
 pytest-steps
 pandas
+dagshub
