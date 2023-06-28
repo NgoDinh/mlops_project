@@ -1,0 +1,14 @@
+kaleido == 0.2.1
+mlflow
+uvicorn
+pydantic
+bentoml
+scikit-learn
+hydra-core
+omegaconf
+patsy 
+hyperopt 
+xgboost
+pandera
+pytest-steps
+pandas
