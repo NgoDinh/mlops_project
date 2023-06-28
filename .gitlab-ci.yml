@@ -22,23 +22,46 @@ run_tests:
   script:
     - pytest training/test
 
-build:
-  stage: build
-  image: ubuntu
-  services:
-    - python:3.10.10
-    - docker:20.10.16-dind
-  # before_script:
-  #   - pip install -r requirements.txt
+.run_build:
+  stage: test
+  script:
+    - echo "woohoo, tests pass" 
+
+python:
+  extends: ['.run_build']
+  image: python:3.10.10
+  before_script:
+    - pip install -r requirements.txt
   script:
     - python --version
-    # - python training/src/main.py
-    # - bentoml build application/src
-    # - bentoml models list
-    # - pwd
-    # - ls
-    # - ls ~
+    - python training/src/main.py
+    - bentoml build application/src
+    - bentoml models list
+
+docker:
+  extends: ['.run_build']
+  image: docker:20.10.16
+  script:
     - docker --version
+    - ls ~
+
+# build:
+#   stage: build
+#   image: ubuntu
+#   services:
+#     - python:3.10.10
+#     - docker:20.10.16-dind
+#   # before_script:
+#   #   - pip install -r requirements.txt
+#   script:
+#     - python --version
+#     - python training/src/main.py
+#     - bentoml build application/src
+#     - bentoml models list
+#     # - pwd
+#     # - ls
+#     # - ls ~
+#     - docker --version
     # - bentoml containerize $IMAGE_NAME:$IMAGE_TAG --opt platform=linux/amd64
     # - docker tag $IMAGE_NAME:$IMAGE_TAG pycaret1vund.azurecr.io/predict_employee
     # - docker push pycaret1vund.azurecr.io/predict_employee
