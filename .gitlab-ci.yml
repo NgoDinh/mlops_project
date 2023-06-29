@@ -37,7 +37,8 @@ python:
   stage: build
   image: python:3.10.10
   services:
-    - docker:20.10.16-dind
+   - name: docker:dind
+     alias: dockerdaemon
   variables:
     DOCKER_TLS_CERTDIR: "/certs"
   # before_script:
@@ -46,6 +47,13 @@ python:
   # image: python:3.10.10
   # before_script:
   #   - pip install -r requirements.txt
+  variables:
+    # Tell docker CLI how to talk to Docker daemon.
+    DOCKER_HOST: tcp://dockerdaemon:2375/
+    # Use the overlayfs driver for improved performance.
+    DOCKER_DRIVER: overlay2
+    # Disable TLS since we're running inside local network.
+    DOCKER_TLS_CERTDIR: ""
   script:
     - docker --version
     - python --version
